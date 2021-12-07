@@ -40,26 +40,12 @@ $alignItems: (
     }
   }
 
-  @include breakpoint('sm') {
-    @for $i from 1 to 13 {
-      &_sm_#{$i} {
-        flex-basis: $i/12 * 100%;
-      }
-    }
-  }
-
-  @include breakpoint('md') {
-    @for $i from 1 to 13 {
-      &_md_#{$i} {
-        flex-basis: $i/12 * 100%;
-      }
-    }
-  }
-
-  @include breakpoint('lg') {
-    @for $i from 1 to 13 {
-      &_lg_#{$i} {
-        flex-basis: $i/12 * 100%;
+  @each $name, $value in $breakpoints {
+    @include breakpoint($name) {
+      @for $i from 1 to 13 {
+          &_#{$name}_#{$i} {
+          flex-basis: $i/12 * 100%;
+        }
       }
     }
   }
